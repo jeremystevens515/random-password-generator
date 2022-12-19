@@ -1,3 +1,5 @@
+console.log("hello, world");
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
