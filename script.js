@@ -3,6 +3,12 @@ console.log("hello, world");
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+// Define generatePassword function
+function generatePassword() {
+  console.log("you clicked the button")
+  return "generated password"
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
