@@ -19,9 +19,26 @@ function requestCharacters() {
   if (n < 8 || n > 128 === true) {
     window.prompt("Password must be between 8 and 128 characters.");
   } else {
+    var confirmation = window.confirm("You requested your pass word be " + n + " characters. Is this correct?");
+    if (confirmation === false) {
+      requestCharacters();
+    } else {
+      return;
+    }
     return;
+    }
+   return;
   }
-}
+// Confirm the number of characters the user input
+// function confirmCharacters() {
+//   var confirmation = window.confirm("You requested your pass word be " + numofCharacters + " characters. Is this correct?");
+//   if (confirmation === false) {
+//     requestCharacters();  
+//   } else {
+//     return;
+//   }
+// }
+
 
 // // Define generatePassword function
 // function generatePassword() {
