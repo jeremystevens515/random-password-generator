@@ -55,7 +55,6 @@ var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] or [0-9];
 var specialCharacters = [array of special characters];
 var arrayAssignments = [lowerCase, upperCase, numbers, specialCharacters];
 var selections = [return from user input];
-var passwordOutput =[empty array];
 
 //1. Prompt user for password criteria
 //  a. prompt user for number of characters between 8 - 128
@@ -71,5 +70,6 @@ var passwordOutput =[empty array];
 
 
 //4. Validate the generated password meets the password criteria
+
 
 //5. Display generated password on the page
