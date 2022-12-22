@@ -1,6 +1,7 @@
 console.log("hello, world. this javascript file is linked to the html file.");
 
 // Assignment Code
+// target the html element by id tag
 var generateBtn = document.querySelector("#generate");
 
 // My Variables
@@ -10,7 +11,6 @@ var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'
 var numbers =[0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '<', '>', '?', '/', ';', ':', '[', ']'];
 var arrayAssignments = [lowerCase, upperCase, numbers, specialCharacters];
-var arrayNames = ['lowercase', 'uppercase', 'numbers', 'special characters'];
 var arrayPosition = [];
 
 
@@ -31,6 +31,7 @@ function requestCharacters() {
         if (confirmation === false) {
           requestCharacters();
         } else {
+          console.log("Number of characters: " + n);
           return n;
         }
     }
@@ -41,11 +42,12 @@ function requestCharacters() {
 // var ans is updated with a boolean on each iteration based on the user's input
 // if the user's answer returns true, i is pushed to an empty array and corresponds to a position in arrayAssignments
 // the total number of criteria selected by the user can be tracked with arrayPosition.length
-  function requestCriteria() {
-    for (var i = 0; i < arrayNames.length; i++) {
-    var ans = window.confirm("Would you like to use " + arrayNames[i] + " in your password?");
+  function requestCriteria(array) {
+    var options = ['lowercase', 'uppercase', 'numbers', 'special characters'];
+    for (var i = 0; i < options.length; i++) {
+    var ans = window.confirm("Would you like to use " + options[i] + " in your password?");
       if (ans === true) {
-        arrayPosition.push(i);
+        array.push(i);
       } else {
         continue;
       }
@@ -56,19 +58,13 @@ function requestCharacters() {
 // math.floor rounds a decimal DOWN to the nearest integer
 // math.random gets a radom number between 0 and 1
 function getRandomValue(argarr) {
+  // randomIndex gets a random integer with a max limit of the argument array (arrayPosition) length
   var randomIndex = Math.floor(Math.random()*argarr.length);
+  console.log("Random index1: " +randomIndex);
+  // randomValue gets a random value from the argument array (arrayPosition) by using the random index generated above
   var randomValue = argarr[randomIndex];
+  console.log("Random value1: " + randomValue);
   return randomValue;
-}
-
-
-// Define function to get random value from the arrays the user selected
-function randomFromRandom(num,arrPos) {
-  for (var i = 0; i < num; i++) {
-    var randomArray = getRandomValue(arrPos);
-    var randomValue = getRandomValue(randomArray);
-    return randomValue;
-  }
 }
 
 // MAIN FUNCTION
@@ -76,9 +72,18 @@ function randomFromRandom(num,arrPos) {
 function generatePassword() {
   console.log("you clicked the button!")
   numofCharacters = requestCharacters();
-  requestCriteria();
-  randomFromRandom(numofCharacters,arrayPosition);
-  return;
+  requestCriteria(arrayPosition);
+  console.log("arrayPosition: " + arrayPosition);
+  var generated = [];
+  for (var i = 0; i < numofCharacters; i++) {
+    var v = getRandomValue(arrayPosition)
+    console.log("v: " + v);
+    var x = getRandomValue(arrayAssignments[v])
+    console.log("x: " + x);
+    generated.push(x);
+    console.log(generated);
+  }
+  return generated.join("");
 }
 
 // Write password to the #password input
@@ -90,14 +95,5 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+//when user clicks the html element that has been set as the value of generateBtn, writePassword is fired
 generateBtn.addEventListener("click", writePassword);
-
-
-  // TESTS
-// console.log(requestCharacters());
-// console.log(typeof requestCharacters());
-// requestCriteria();
-// console.log('array position: ' + arrayPosition);
-// console.log('number of options ok: ' + arrayPosition.length);
-  // END TESTS
