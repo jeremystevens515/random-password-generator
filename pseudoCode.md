@@ -65,8 +65,10 @@ var selections = [return from user input];
 //  b. Track how many criteria were selected
 
 //3. Generate password
-//  a. use number of characters to determine how many times to run the main loop which randomly selects a character from a randomly selected list of characters
-//  b. use number of inputs that are === true as the number of arrays to randomize
+//  a. randomly pick array from the selections the user input
+//  b. randomly pick a value from the array that was randomly selected
+//  c. return that value to password variable
+//  d. loop through process as many times as there are characters
 
 
 //4. Validate the generated password meets the password criteria
